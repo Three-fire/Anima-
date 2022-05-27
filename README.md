@@ -1,4 +1,14 @@
-#  Anima外卖项目
+#  Anima外卖项目  --含开发经历及详细流程
+
+成果图大致如下：
+后台管理界面：![截屏2022-05-27 23 05 31](https://user-images.githubusercontent.com/56632599/170726765-ce76f776-0c22-43e9-86d0-7f646da31ac0.png)
+
+![截屏2022-05-27 23 06 19](https://user-images.githubusercontent.com/56632599/170726917-39a02833-3a37-4de6-9900-57890a31ed8b.png)
+
+前台界面：![截屏2022-05-27 23 07 20](https://user-images.githubusercontent.com/56632599/170727098-46428f8e-f904-4a00-9f14-9fff32d82033.png)
+
+
+
 
 ## day01：
 
@@ -13,8 +23,8 @@
 ​				（2）MySql
 
 ​				（3）建表
+![截屏2022-05-27 23 02 22](https://user-images.githubusercontent.com/56632599/170726133-52b63439-290b-4a5a-bea4-8e8e7eacfd21.png)
 
-<img src="/Users/s/Library/Application%20Support/typora-user-images/%E6%88%AA%E5%B1%8F2022-05-14%20%E4%B8%8B%E5%8D%885.30.46.png" alt="截屏2022-05-14 下午5.30.46" style="zoom:50%;" />
 
 
 
