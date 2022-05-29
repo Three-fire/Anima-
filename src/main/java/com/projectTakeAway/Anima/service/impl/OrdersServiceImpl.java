@@ -2,9 +2,11 @@ package com.projectTakeAway.Anima.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.IdWorker;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.projectTakeAway.Anima.common.BaseContext;
 import com.projectTakeAway.Anima.common.CustomException;
+import com.projectTakeAway.Anima.common.R;
 import com.projectTakeAway.Anima.entity.*;
 import com.projectTakeAway.Anima.mapper.OrdersMapper;
 import com.projectTakeAway.Anima.service.*;
@@ -40,8 +42,12 @@ public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders> impleme
     @Autowired
     private OrderDetailService orderDetailsService;
 
+    @Autowired
+    private OrdersService ordersService;
+
     /**
      * 用户下单
+     *
      * @param orders
      */
     @Override
@@ -113,4 +119,5 @@ public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders> impleme
         // 下单完成后，清空购物车数据
         shoppingCartService.remove(queryWrapper);
     }
+
 }

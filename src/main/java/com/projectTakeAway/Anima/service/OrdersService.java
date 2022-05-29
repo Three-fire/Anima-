@@ -1,6 +1,8 @@
 package com.projectTakeAway.Anima.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.projectTakeAway.Anima.common.R;
 import com.projectTakeAway.Anima.entity.Orders;
 @SuppressWarnings("all")
 
@@ -13,4 +15,5 @@ public interface OrdersService extends IService<Orders> {
 
     // 用户下单
     public void submit(Orders orders);
+
 }

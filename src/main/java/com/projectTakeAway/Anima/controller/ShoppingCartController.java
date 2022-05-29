@@ -107,4 +107,16 @@ public class ShoppingCartController {
 
         return R.success("清空购物车成功");
     }
+
+    /**
+     * 购物车的商品的减少
+     * @param shoppingCart
+     * @return
+     */
+    @PostMapping
+    public R<String> sub(@RequestBody ShoppingCart shoppingCart) {
+        shoppingCartService.subGoods(shoppingCart);
+
+        return R.success("删除成功");
+    }
 }
