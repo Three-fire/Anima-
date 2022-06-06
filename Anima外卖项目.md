@@ -645,3 +645,39 @@
 ​				（1）需求分析： 下单支付完成后，用户可以点击查看订单，跳转至相应的订单页面（`order.html`）	  
 
 ​				（2）代码开发：
+
+
+
+
+
+
+
+# 优化篇：
+
+### Redis数据类型：
+
+![IMG_FF45D3481DEE-1](/Users/s/Desktop/My%20Projects/take_away/IMG_FF45D3481DEE-1.jpeg)
+
+
+
+### 1、缓存短信验证码：
+
+
+
+1. 在`UserController`中注入`RedisTemplate对象`，用于操作`Redis`，在`sendMsg()`方法中，将随机生成的验证码缓存到`Redis`中，并设置有效期为5mins
+2. 在`login()`方法中，从`Redis`中获取 缓存的验证码，如果登陆成功 则删除`Redis`中的验证码
+
+
+
+
+
+### 2、缓存菜品数据：
+
+
+
+1. 优化`DishController`的`list()`方法，先从`Redis`中获取菜品数据，如果有则直接返回，无需查询数据库；若没有则查询数据库，并将查询到的菜品数据放入到`Redis`中
+2. 优化`DishController`的`save()`和`update()`方法，加入清理缓存的逻辑
+
+
+
+- [x] 使用缓存过程中，要注意保证数据库的数据和缓存中的数据一致，如果数据库中的数据发生变化，需要及时清理缓存数据
