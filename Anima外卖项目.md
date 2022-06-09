@@ -681,3 +681,114 @@
 
 
 - [x] 使用缓存过程中，要注意保证数据库的数据和缓存中的数据一致，如果数据库中的数据发生变化，需要及时清理缓存数据
+
+
+
+
+
+### 3、缓存套餐数据：
+
+1. `Spring Cache`框架，使用注解方式缓存数据
+2. 在启动类上添加`@EnableCaching`开启缓存功能
+3. `@CacheEvict`缓存清除， `@Cacheable`加入缓存
+
+
+
+
+
+### 4、读写分离：
+
+
+
+1. MySql主从复制 
+
+>是一个异步的复制过程，底层是基于MySql数据库自带的`二进制日志`功能
+>
+>- `master库`将改变 记录到二进制日志（`binary log`）
+>- `slave库`将master库 的**binary log** 拷贝到它的中继日志（`relay log`）
+>- `slave库`重做 **中继日志**中的事件，将改变应用到自己的数据库中
+
+
+
+1.1 配置Master库：
+
+- 首先修改MySql数据库的配置文件 `/etc/my.cnf`  ==> `log-bin=mysql-bin` #启用二进制日志 ,  `server-id=100` #服务器唯一ID
+- 重启MySql服务 ==>  `systemctl restart mysqld`
+- 登陆MySql数据库，执行以下SQL： `GRANT REPLICATION SLAVE ON '.' To 'ss'@'%' identified by 'Root@123456';`  
+
+- [x] 该SQL语句作用是创建一个ss用户，授予`REPLICATION SLAVE`权限
+
+- 最后一步，执行以下SQL： `show master status`，记录下结果中File和Position的值 
+
+
+
+1.2 配置Slave库
+
+- 首先修改Mysql数据库的配置文件 `/etc/my.cnf` ==> `server-id=101` #服务器唯一ID
+
+- 重启MySql服务 ==> `systemctl restart mysqld`
+
+- 登陆到MySql数据库，执行以下SQL：`change master to master_host='192.xxx.xxx.xxx',master_user='ss',master_paswword='Root@123456',master_log_file='mysql-bin.00000x',master_log_pos=4xx;`
+
+  `start salve;`
+
+ 
+
+2. 读写分离
+
+`Sharding-JDBC`: 轻量级Java框架，在Java的JDBC层提供额外的服务
+
+
+
+
+
+### 5、Nginx：
+
+
+
+1. 部署静态资源
+
+>将静态资源文件复制到`Nginx`安装目录下的 html目录中即可
+
+
+
+2. 反向代理
+
+>反向代理服务器位于 `用户与目标服务器` 之间，但对于用户而言，反向代理服务器就相当于目标服务器，即用户直接访问反向代理服务器就可以获得目标服务器的资源
+>
+>反向代理服务器负责将请求转发给目标服务器，用户无需知道目标服务器的地址，也无需在用户端作任何设定
+
+
+
+3. 负载均衡
+
+>`应用集群`： 将同一应用部署到多台机器上，组成应用集群，接受负载均衡器 分发的请求，就行业务处理并返回响应数据
+>
+>`负载均衡`： 将用户请求根据对应的 负载均衡算法分发到应用集群中的一台服务器进行处理
+
+- [x] 本质上基于反向代理实现
+
+
+
+
+
+### 6、前后端分离：
+
+
+
+1. YApi
+
+>`Api`管理平台，开发人员只需利用平台提供的接口数据写入工具 以及简单的点击操作就可以实现接口的管理
+
+- [x] 现在`Apifox`更好用
+
+
+
+2. Swagger
+
+>- 导入`knife4j`（Swagger增强版）的maven坐标
+>- 导入`knife4j`相关配置类
+>- 设置静态资源，否则接口文档页面无法访问
+>- 在`LoginCheckFilter`中设置不需要处理的请求路径
+
+- [x] 在localhost:8080/doc.html可见全部接口

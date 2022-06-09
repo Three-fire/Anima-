@@ -38,11 +38,14 @@ public class LoginCheckFilter implements Filter {
         //1、获取本次请求的`URL`
         String requestUrl = request.getRequestURI();
         log.info("拦截到的请求：{}", requestUrl);
+
         // 不需要处理的请求
         String[] urls = new String[] {
                 "/employee/login", "/employee/logout",
                 "/backend/**", "/front/**",
-                "/user/sendMsg","/user/login"
+                "/user/sendMsg","/user/login",
+                "/doc.html","/webjars/**",
+                "/swagger-resources","/v2/api-docs"
         };
 
         //2、判断本次请求是否需要处理

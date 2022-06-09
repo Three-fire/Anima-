@@ -15,6 +15,9 @@ spring:
     host: 127.0.0.1
     port: 6379
     database: 0
+  cache:
+    redis:
+      time-to-live: 1800000 #设置缓存的过期时间
 mybatis-plus:
   configuration:
     #在映射实体或者属性时，将数据库中表名和字段名中的下划线去掉，按照驼峰命名法映射
