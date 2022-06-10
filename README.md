@@ -1,11 +1,15 @@
 #  Anima外卖项目  --含开发经历及详细流程（未完，持续更新。。。）
 
-成果图大致如下：
-后台管理界面：![截屏2022-05-27 23 05 31](https://user-images.githubusercontent.com/56632599/170726765-ce76f776-0c22-43e9-86d0-7f646da31ac0.png)
+### 成果图大致如下：
 
-![截屏2022-05-27 23 06 19](https://user-images.githubusercontent.com/56632599/170726917-39a02833-3a37-4de6-9900-57890a31ed8b.png)
+后台登陆界面：![截屏2022-06-10 23 35 46](https://user-images.githubusercontent.com/56632599/173100819-beafaa80-adee-4115-a063-3606d06627bf.png)
 
-前台界面：![截屏2022-05-27 23 07 20](https://user-images.githubusercontent.com/56632599/170727098-46428f8e-f904-4a00-9f14-9fff32d82033.png)
+
+后台管理界面：![截屏2022-06-10 23 36 38](https://user-images.githubusercontent.com/56632599/173100986-085cd66b-41a1-420c-b78f-0b6149bf2e86.png)
+![截屏2022-06-10 23 37 34](https://user-images.githubusercontent.com/56632599/173101165-03af653e-caf1-4f96-8cb1-9ee5fa3e24e4.png)
+
+
+移动端界面：![截屏2022-05-27 23 07 20](https://user-images.githubusercontent.com/56632599/170727098-46428f8e-f904-4a00-9f14-9fff32d82033.png)
 
 
 
